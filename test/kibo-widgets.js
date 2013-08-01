@@ -35,14 +35,14 @@ describe('WidgetBox', function () {
 
     // https:/gist.github.com/jmanoto/5801901/raw/options.js
 
-    widgets.getGist({url: '/gist/jmanoto/5801901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes(done));
+    widgets.getGist({url: '/widgets/gist/jmanoto/5801901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes(done));
 
   })
 
   it('should validate url params and raise an error', function () {
 
     // https:/gist.github.com/jmanoto/5801901/raw/options.js
-    expect(widgets.getGist.bind(null, {url: '/gist/jmanoto/58--01901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes())).to.throw(Error);
+    expect(widgets.getGist.bind(null, {url: '/widgets/gist/jmanoto/58--01901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes())).to.throw(Error);
 
   })
 });
