@@ -38,11 +38,25 @@ describe('WidgetBox', function () {
     widgets.getGist({url: '/widgets/gist/jmanoto/5801901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes(done));
 
   })
+  
+  it('should retrieve parse URL and proxy specified github repo', function (done) {
 
-  it('should validate url params and raise an error', function () {
+    // https://github.com/theojulienne/ninja-widget-default/blob/master/widget/options.js
+
+    widgets.getGist({url: '/widgets/github/theojulienne/ninja-widget-default/master/widget/options.js', path: '/github/theojulienne/ninja-widget-default/master/widget/options.js'}, buildRes(done));
+
+  })
+
+  it('should validate url params and raise an error for gist', function () {
 
     // https:/gist.github.com/jmanoto/5801901/raw/options.js
     expect(widgets.getGist.bind(null, {url: '/widgets/gist/jmanoto/58--01901/options.js', path: '/gist/jmanoto/5801901/options.js'}, buildRes())).to.throw(Error);
+
+  })
+  
+  it('should validate url params and raise an error for github repo', function () {
+
+    expect(widgets.getGist.bind(null, {url: '/widgets/github/theojulienne/ninja-widget-default/master/widget/arbitrary.js', path: '/github/theojulienne/ninja-widget-default/master/widget/options.js'}, buildRes())).to.throw(Error);
 
   })
 });
